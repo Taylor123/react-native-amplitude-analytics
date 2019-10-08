@@ -27,7 +27,7 @@ RCT_EXPORT_METHOD(appendToUserProperty:(NSString *)property value:(NSString *)va
     [[Amplitude instance] identify:identify];
 }
 
-RCT_EXPORT_METHOD(getUserProperty:(NSString *)property (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(getUserProperty:(NSString *)property resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
   AMPIdentify *identify = [AMPIdentify identify];
   resolve(identify);
