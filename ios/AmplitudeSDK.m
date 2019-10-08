@@ -21,6 +21,18 @@ RCT_EXPORT_METHOD(setUserProperties:(NSDictionary *)properties)
      [[Amplitude instance] setUserProperties:properties];
 }
 
+RCT_EXPORT_METHOD(appendToUserProperty:(NSString *)property value:(NSString *)value)
+{
+    AMPIdentify *identify = [[AMPIdentify identify] append:property value:value];
+    [[Amplitude instance] identify:identify];
+}
+
+RCT_EXPORT_METHOD(getUserProperty:(NSString *)property (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+  AMPIdentify *identify = [AMPIdentify identify];
+  resolve(identify);
+}
+
 RCT_EXPORT_METHOD(setOptOut:(BOOL) optOut)
 {
     [[Amplitude instance] setOptOut:optOut];

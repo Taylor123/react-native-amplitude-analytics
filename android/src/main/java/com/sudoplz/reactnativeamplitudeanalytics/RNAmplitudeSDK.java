@@ -62,6 +62,12 @@ public class RNAmplitudeSDK extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
+  public void appendToUserProperty(String property, String value) {
+    Identify identify = new Identify().append(property, value);
+    Amplitude.getInstance().identify(identify);
+  }
+
+  @ReactMethod
   public void setOptOut(Boolean optOut) {
     Amplitude.getInstance().setOptOut(optOut);
   }

@@ -53,6 +53,14 @@ class Amplitude {
     }
   }
 
+  appendToUserProperty(property, value) {
+    if (amplitudeHasInitialized) {
+      return RNAmplitudeSDK.appendToUserProperty(property, value);
+    } else {
+      throw new Error('You called Amplitude.appendToUserProperty before initializing it. Run new Amplitute(key) first.');
+    }
+  }
+
   setOptOut(optOut) {
     if (amplitudeHasInitialized) {
       return RNAmplitudeSDK.setOptOut(optOut);
@@ -74,6 +82,14 @@ class Amplitude {
       return RNAmplitudeSDK.getDeviceId();
     } else {
       throw new Error('You called Amplitude.getDeviceId before initializing it. Run new Amplitude(key) first.')
+    }
+  }
+
+  getUserProperty(property) {
+    if (amplitudeHasInitialized) {
+      return RNAmplitudeSDK.getUserProperty(property);
+    } else {
+      throw new Error('You called Amplitude.getUserProperty before initializing it. Run new Amplitude(key) first.')
     }
   }
 
